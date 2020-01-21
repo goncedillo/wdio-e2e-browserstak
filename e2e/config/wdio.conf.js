@@ -1,5 +1,4 @@
 require("dotenv").config();
-
 const path = require("path");
 
 const capabilities = {
@@ -25,7 +24,6 @@ const selectedCapabilities = loadedCapabilities({
     buildName
 })
 
-
 exports.config = {
     //
     // ====================
@@ -48,7 +46,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './test/**/*.test.js'
+        path.resolve(__dirname, "test", "**", "*.test.js")
     ],
     // Patterns to exclude.
     exclude: [
