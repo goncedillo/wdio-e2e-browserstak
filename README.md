@@ -1,4 +1,4 @@
-# E2E Wdio template
+# Testium
 
 > The purpose of this library is to show how to implement different aproaches for e2e testing with [WebdriverIO](https://webdriver.io/) and [Browserstack](http://browserstack.com).
 
