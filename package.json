@@ -7,8 +7,8 @@
     "e2e:all": "wdio run ./e2e/config/wdio.conf.js all ",
     "e2e:mobile": "wdio run ./e2e/config/wdio.conf.js mobile ",
     "e2e:desktop": "wdio run ./e2e/config/wdio.conf.js desktop ",
-    "e2e:local": "wdio run ./e2e/config/wdio.local.conf.js",
-    "e2e:local:chrome": "wdio run ./e2e/config/wdio.local.conf.js opened",
+    "e2e:local": "wdio run ./e2e/config/wdio.local.conf.js closed ",
+    "e2e:local:chrome": "wdio run ./e2e/config/wdio.local.conf.js opened ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

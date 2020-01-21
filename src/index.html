@@ -5,16 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Coco</title>
+    <title>e2e example app</title>
 </head>
 
 <body>
     <p id="onlyp">Hi!</p>
+    <div id="visor">
+        <p>A button to be pressed</p>
+        <button id="push-btn">Push me</button>
+    </div>
 
     <script>
-        console.log("Algo")
-        console.warn("Otro")
-        console.error(new Error("Un error"))
+        var $visor = document.getElementById("visor");
+        var $btn = document.getElementById("push-btn");
+
+        $btn.addEventListener("click", () => {
+            var $message = document.createElement("p");
+            $message.classList.add("message");
+            $message.innerText = "Thanks to press me ;)";
+
+            $visor.appendChild($message);
+        });
     </script>
 </body>
 

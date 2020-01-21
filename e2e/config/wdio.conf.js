@@ -10,10 +10,15 @@ const capabilities = {
 const args = process.argv.slice(4);
 const typeOfCapabilities = args[0] || capabilities.ALL;
 const typeOfCapabilitiesName = capabilities[typeOfCapabilities.toUpperCase()];
+
+
 const serverBaseUrl = process.env.E2E_BASE_URL;
 const browserStackUser = process.env.BROWSERSTACK_USER;
 const browserStackKey = process.env.BROWSERSTACK_KEY;
 const browserStackProjectName = process.env.BROWSERSTACK_PROJECT_NAME;
+const testsFolder = process.env.E2E_TEST_FOLDER || "tests";
+
+const specsToTest = args[1] || path.resolve(process.cwd(), testsFolder, "**", "*.test.js");
 
 const now = new Date();
 const buildName = `${now.getDate()}.${String(now.getMonth() + 1).padStart(2, "0")}.${now.getFullYear()} - ${typeOfCapabilities} ${now.getTime()} `
@@ -46,7 +51,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        path.resolve(__dirname, "test", "**", "*.test.js")
+        specsToTest
     ],
     // Patterns to exclude.
     exclude: [

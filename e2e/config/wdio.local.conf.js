@@ -2,8 +2,12 @@ require("dotenv").config();
 const path = require("path");
 
 const serverBaseUrl = process.env.E2E_BASE_URL;
+const testsFolder = process.env.E2E_TEST_FOLDER || "tests";
+
 const args = process.argv.slice(4);
-const isHeadless = !args[0] || args[0] !== "opened";
+const isHeadless = args[0] === "closed";
+
+const specsToTest = args[1] || path.resolve(process.cwd(), testsFolder, "**", "*.test.js");
 
 exports.config = {
     //
@@ -27,7 +31,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        path.resolve(process.cwd(), "test", "**", "*.test.js")
+        specsToTest
     ],
     // Patterns to exclude.
     exclude: [
