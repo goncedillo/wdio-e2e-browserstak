@@ -20,27 +20,31 @@ module.exports = {
         "device": "iPad Pro 12.9 2018",
         "real_mobile": "true",
         "browserstack.local": "true",
-        "browserName": "iPad"
+        "browserName": "iPad",
+        "browserstack.console": "verbose"
     },
     IPAD_MINI: {
         "os_version": "12",
         "device": "iPad Mini 2019",
         "real_mobile": "true",
         "browserstack.local": "true",
-        "browserName": "iPad"
+        "browserName": "iPad",
+        "browserstack.console": "verbose"
     },
     PIXEL_XL: {
         "os_version": "10.0",
         "device": "Google Pixel 4 XL",
         "real_mobile": "true",
         "browserstack.local": "true",
-        "browserName": "Android"
+        "browserName": "Android",
+        "browserstack.console": "verbose"
     },
     SAMSUNG_GALAXY_TAB: {
         "os_version": "9.0",
         "device": "Samsung Galaxy Tab S5e",
         "real_mobile": "true",
         "browserstack.local": "true",
-        "browserName": "Android"
+        "browserName": "Android",
+        "browserstack.console": "verbose"
     }
 };

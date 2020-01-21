@@ -6,9 +6,14 @@ describe("Another test case", () => {
     it("should add paragraph", async () => {
         await browser.url(process.env.E2E_BASE_URL)
 
-        const title = await (await browser.$("#push-btn")).click();
-        const resultParagraph = await (await browser.$(".message")).isExisting();
+        const button = await $("#push-btn");
 
-        assert.ok(resultParagraph, "Print new message");
+        await button.click();
+
+        const message = await $(".message");
+
+        message.waitForExist(5000);
+
+        assert.ok(message, "Print new message");
     });
 });

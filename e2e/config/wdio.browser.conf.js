@@ -1,15 +1,8 @@
 require("dotenv").config();
 const path = require("path");
-
-const capabilities = {
-    ALL: "all.js",
-    MOBILE: "mobile.js",
-    DESKTOP: "desktop.js"
-}
+const capabilities = require("./capabilities/all");
 
 const args = process.argv.slice(4);
-const typeOfCapabilities = args[0] || capabilities.ALL;
-const typeOfCapabilitiesName = capabilities[typeOfCapabilities.toUpperCase()];
 
 const serverBaseUrl = process.env.E2E_BASE_URL;
 const browserStackUser = process.env.BROWSERSTACK_USER;
@@ -17,16 +10,20 @@ const browserStackKey = process.env.BROWSERSTACK_KEY;
 const browserStackProjectName = process.env.BROWSERSTACK_PROJECT_NAME;
 const testsFolder = process.env.E2E_TEST_FOLDER || "tests";
 
+const now = new Date();
+
+const devices = capabilities({
+    project: browserStackProjectName
+});
+
+const selectedDevice = args[0] && devices.find(item => item.devName === args[0]) || devices[0];
 const specsToTest = args[1] || path.resolve(process.cwd(), testsFolder, "**", "*.test.js");
 
-const now = new Date();
-const buildName = `${now.getDate()}.${String(now.getMonth() + 1).padStart(2, "0")}.${now.getFullYear()} - ${typeOfCapabilities} ${now.getTime()} `
+const buildName = `${now.getDate()}.${String(now.getMonth() + 1).padStart(2, "0")}.${now.getFullYear()} - BROWSER ${selectedDevice.devName} ${now.getTime()} `;
 
-const loadedCapabilities = require(path.resolve(__dirname, "capabilities", typeOfCapabilitiesName));
-const selectedCapabilities = loadedCapabilities({
-    project: browserStackProjectName,
-    buildName
-})
+selectedDevice.buildName = buildName;
+
+const selectedCapabilities = [selectedDevice];
 
 exports.config = {
     //
