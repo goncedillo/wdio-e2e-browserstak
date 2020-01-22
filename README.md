@@ -1,4 +1,4 @@
-# Testium
+# wdio-e2e-browserstak
 
 > The purpose of this library is to show how to implement different aproaches for e2e testing with [WebdriverIO](https://webdriver.io/) and [Browserstack](http://browserstack.com).
 
@@ -40,6 +40,13 @@ Additionally, you should have a `tests` (or whatever you want name it) folder fo
 - **BROWSERSTACK_USER**: Browserstack username
 - **BROWSERSTACK_KEY**: Browserstack token key to connect
 - **BROWSERSTACK_PROJECT_NAME**: Project name for Browserstack organization
+
+### Devices management
+
+All the devices are included by default in the folder `e2e/config/capabilities/devices` where you will find several configurations that are created by default in the project as `mobile` and `desktop` types.
+
+Feel free to modify this configuration to your needs. The only thing you have to care about is to use keys as descriptives as you can, in order to be used by NPM commands mentioned bellow.
+
 
 ## Working in local environment
 
@@ -113,6 +120,14 @@ You can use all of above commands to launch your test in whichever stage. For in
 ```bash
 npm run e2e:all <RELATIVE_PATH_TO_YOUR_TEST_FILE>
 ```
+
+##### Run all the tests only in one browser
+
+```bash
+npm run e2e:browser [<DEVICE_NAME>] [<RELATIVE_PATH_TO_YOUR_TEST_FILE>]
+```
+
+By default the command runs all test in the first browser that is setted in your configuration. You can add a second paramter to run only a specific test file.
 
 ## Example Project
 
